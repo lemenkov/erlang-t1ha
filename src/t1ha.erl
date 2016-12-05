@@ -45,6 +45,8 @@
 hash(Binary, Seed) ->
 	hash(Binary, Seed, Seed, size(Binary)).
 
+%% Internals
+
 hash(Binary, Seed, A, B) when 32 < size(Binary) ->
 	C = lo(rot64(size(Binary), ?S1) + Seed),
 	D = size(Binary) bxor rot64(Seed, ?S1),
@@ -77,8 +79,6 @@ hash(Binary, Seed, A, B) when 1 =< size(Binary), size(Binary) =< 8 ->
 hash(<<>>, _Seed, A, B) ->
 	Ret = mux64(rot64(lo(A + B), ?S1), ?P4) + mix(A bxor B, ?P0),
 	<<Ret:64/big-unsigned-integer>>.
-
-%% Internals
 
 skip_until_less_32(<<W0:64/little-unsigned-integer, W1:64/little-unsigned-integer, W2:64/little-unsigned-integer, W3:64/little-unsigned-integer, Rest/binary>> = Binary, A, B, C, D) when 32 =< size(Binary) ->
 	D02 = W0 bxor rot64(lo(W2 + D), ?S1),
