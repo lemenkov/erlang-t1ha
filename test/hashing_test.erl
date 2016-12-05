@@ -28,6 +28,10 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
+%%
+%% Data vectors are taken from https://github.com/dgryski/go-t1ha
+%%
+
 hash_list() ->
 	[
 		<<16#EA, 16#11, 16#31, 16#CF, 16#6F, 16#3F, 16#58, 16#48>>,
