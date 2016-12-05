@@ -48,7 +48,7 @@ hash(Binary, Seed) ->
 
 hash(Binary, Seed, A, B) when 32 < size(Binary) ->
 	C = lo(rot64(size(Binary), ?S1) + Seed),
-	D = lo(size(Binary) bxor rot64(Seed, ?S1)),
+	D = size(Binary) bxor rot64(Seed, ?S1),
 
 	{Rest, NewA, NewB, NewC, NewD} = skip_until_less_32(Binary, A, B, C, D),
 
@@ -76,7 +76,7 @@ hash(Binary, Seed, A, B) when 1 =< size(Binary), size(Binary) =< 8 ->
 	hash(<<>>, Seed, NewA, B);
 
 hash(<<>>, _Seed, A, B) ->
-	Ret = lo(mux64(rot64(lo(A + B), ?S1), ?P4) + mix(A bxor B, ?P0)),
+	Ret = mux64(rot64(lo(A + B), ?S1), ?P4) + mix(A bxor B, ?P0),
 	<<Ret:64/big-unsigned-integer>>.
 
 %% Internals
@@ -87,8 +87,8 @@ skip_until_less_32(<<W0:64/little-unsigned-integer, W1:64/little-unsigned-intege
 
 	NewA = A bxor lo(?P1 * lo(D02 + W3)),
 	NewB = B bxor lo(?P0 * lo(C13 + W2)),
-	NewC = lo(C + lo(A bxor rot64(W0, ?S0))),
-	NewD = lo(D - lo(B bxor rot64(W1, ?S2))),
+	NewC = lo(C + (A bxor rot64(W0, ?S0))),
+	NewD = lo(D - (B bxor rot64(W1, ?S2))),
 
 	skip_until_less_32(Rest, NewA, NewB, NewC, NewD);
 skip_until_less_32(Binary, A, B, C, D) ->
