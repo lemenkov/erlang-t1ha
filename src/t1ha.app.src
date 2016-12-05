@@ -1,0 +1,14 @@
+{application, t1ha,
+ [
+  {description, "An Erlang t1ha library"},
+  {vsn, "1"},
+  {modules, [
+             t1ha
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
