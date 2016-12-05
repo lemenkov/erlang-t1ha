@@ -25,7 +25,6 @@
 %% t1ha: t1ha library's entry point.
 
 -export([hash/2]).
--compile(export_all).
 
 % Magic Primes
 -define(P0, 17048867929148541611).
