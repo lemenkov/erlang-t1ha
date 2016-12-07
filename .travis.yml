@@ -1,0 +1,15 @@
+sudo: required
+dist: trusty
+
+notifications:
+        email: false
+
+before_install:
+        - sudo apt-get -qq update
+
+language: erlang
+
+otp_release:
+        - 18.0
+
+script: "./rebar compile && ./rebar skip_deps=true eunit -v"

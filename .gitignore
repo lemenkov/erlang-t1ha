@@ -1,0 +1,14 @@
+*.d
+*.diff
+*.o
+*.orig
+*.patch
+*.rej
+*.so
+*~
+.DS_Store
+.eunit/
+.rebar/
+compile_commands.json
+deb-build
+ebin/
