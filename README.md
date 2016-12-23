@@ -8,4 +8,4 @@ by [Positive Technologies](https://www.ptsecurity.com).
 See also:
 
 * [Reference ANSI C implementation](https://github.com/leo-yuriev/t1ha).
-* [Golang implementation](https://github.com/dgryski/go-t1ha)
+* [Golang implementation](https://github.com/dgryski/go-t1ha).
